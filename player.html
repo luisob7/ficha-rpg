@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Ficha do Jogador</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(#05030e, #171433, #332d73, #6435a9);
+      color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      min-width: 800px;
+      min-height: 80%;
+      border: 12px solid;
+      border-image: linear-gradient(
+        to right,
+        #411013, #5b1c0b, #823815, #933d00, #a4510b, #803900, #ae4f00, #d26e10, #da7b21, #d37c37, #762f03
+      ) 1;
+      border-radius: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 0;       /* espaço controlado pelo padding interno dos blocos */
+      padding: 0;   /* sem padding lateral no container */
+      background: #ffd285;
+    }
+
+    .block {
+      padding: 2rem;           /* padding interno, mantém conteúdo afastado da borda */
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .divider {
+      height: 3px;
+      background-color: #d68f54;
+      width: 100%; /* ocupa toda a largura do container */
+      margin: 0;   /* sem margem */
+    }
+
+    /* Bloco 1: foto + dados */
+    .block-1 {
+      flex-direction: row;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .profile-pic {
+      width: 200px;
+      height: 250px;
+      object-fit: cover;
+      border: 4px solid;
+      border-image: linear-gradient(
+      to right,
+      #853605, #b14e05, #5b2b2a, #dc7b05, #853605
+    ) 1;
+    }
+
+    .player-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      font-weight: bold;
+      color: #222;
+    }
+
+    /* Bloco 2: habilidades */
+    .block-2 table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .block-2 th, .block-2 td {
+      padding: 8px;
+      border-bottom: 1px solid #444;
+      text-align: left;
+    }
+
+    .block-2 th {
+      background-color: #3a3a3a;
+      color: #fff;
+    }
+
+    /* Blocos 3 e 4 podem ter qualquer conteúdo, já estão estilizados */
+    .block-3, .block-4 {
+      min-height: 100px;
+    }
+
+    #player-name {
+      color: #221122;   /* cor desejada para o nome */
+      font-size: 1.8rem;  /* tamanho maior */
+    }
+
+    #player-level {
+      color: #221122;
+      font-size: 1.3rem;
+    }
+
+    #player-money {
+      color: #221122;
+      font-size: 1.3rem;
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .block-1 {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .profile-pic {
+        width: 150px;
+        height: 200px;
+      }
+
+      .player-info {
+        align-items: center;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Bloco 1: foto + dados -->
+    <div class="block block-1">
+      <img id="player-pic" class="profile-pic" src="" alt="Foto do personagem">
+      <div class="player-info">
+        <div id="player-name">Nome</div>
+        <div id="player-level">Nível</div>
+        <div id="player-money">Dinheiro</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Bloco 2: habilidades -->
+    <div class="block block-2">
+      <h3>Habilidades</h3>
+      <table>
+        <tr><th>Habilidade</th><th>Nível</th></tr>
+        <tr><td>Força</td><td>10</td></tr>
+        <tr><td>Agilidade</td><td>8</td></tr>
+        <tr><td>Inteligência</td><td>7</td></tr>
+      </table>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Bloco 3: inventário / itens -->
+    <div class="block block-3">
+      <h3>Inventário</h3>
+      <ul>
+        <li>Espada de Ferro</li>
+        <li>Escudo de Madeira</li>
+        <li>Pocão de Vida</li>
+      </ul>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Bloco 4: notas ou histórico -->
+    <div class="block block-4">
+      <h3>Notas / Histórico</h3>
+      <p>Este é o espaço para anotações do jogador, histórico de batalhas ou missões completadas.</p>
+    </div>
+  </div>
+
+  <script>
+    const levelTitles = {
+      0: "Principiante",
+      1: "Principiante",
+      2: "Principiante",
+      3: "Novato",
+      4: "Rústico",
+      5: "Rústico",
+      6: "Vaqueiro",
+      7: "Vaqueiro",
+      8: "Peão",
+      9: "Peão",
+      10: "Lavrador",
+      11: "Lavrador",
+      12: "Pequeno proprietário",
+      13: "Pequeno proprietário",
+      14: "Escavador",
+      15: "Escavador",
+      16: "Garoto(a) da Fazenda",
+      17: "Garoto(a) da Fazenda",
+      18: "Granjeiro",
+      19: "Granjeiro",
+      20: "Semeador",
+      21: "Semeador",
+      22: "Rancheiro",
+      23: "Rancheiro",
+      24: "Fazendeiro",
+      25: "Fazendeiro",
+      26: "Agricultor",
+      27: "Agricultor",
+      28: "Mestre de colheita",
+      29: "Mestre de colheita",
+      30: "Rei da Fazenda"
+    };
+
+    const loadPlayerDetails = async () => {
+      const params = new URLSearchParams(window.location.search);
+      const id = parseInt(params.get('id'), 10);
+
+      if (!id) return;
+
+      const res = await fetch('data.json');
+      const players = await res.json();
+      const player = players.find(p => p.ID === id);
+
+      if (!player) return;
+
+      document.getElementById("player-pic").src = player.Pic;
+      document.getElementById("player-name").textContent = player.Nome;
+      document.getElementById("player-level").textContent = `${levelTitles[player.Level] || "Rei da Fazenda"}`;
+      document.getElementById("player-money").textContent = `🪙 ${player.Dinheiro}`;
+    }
+
+    loadPlayerDetails();
+  </script>
+</body>
+</html>

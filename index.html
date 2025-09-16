@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>PES 2010 Database - Cards com Imagem</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: linear-gradient(#05030e, #171433, #332d73, #6435a9, #6435a9);
+      color: #f0f0f0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container-principal {
+      background-color: #ffd285;
+      padding: 2rem;
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      min-height: 60%;
+      max-height: 90vh;
+      overflow-y: auto;
+      border: 12px solid;
+      border-image: linear-gradient(
+        to right,
+        #411013, #5b1c0b, #823815, #933d00, #a4510b, #803900, #ae4f00, #d26e10, #da7b21, #d37c37, #762f03
+      ) 1;
+      border-radius: 15px;
+    }
+
+    .player-card {
+      background-color: #ffd285;
+      padding: 1rem;
+      cursor: pointer;
+      transition: background-color 0.2s, transform 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: space-between; /* <- adiciona espaço entre esquerda e direita */
+      gap: 1rem;
+      border: 6px solid;
+      border-image: linear-gradient(
+        to left,
+        #9f541d, #792f08, #6e2a03
+      ) 1;
+      border-radius: 10px;
+    }
+
+    .player-card:hover {
+      background-color: #f4b75e;
+      transform: translateY(-2px);
+    }
+
+    .player-pic {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #571000;
+    }
+
+    .player-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .player-name {
+      font-weight: bold;
+      font-size: 1.8rem;
+      margin-bottom: 0.3rem;
+      color: #571000;
+    }
+
+    .player-money {
+      font-size: 1.3rem;
+      color: #571000;
+    }
+
+    .player-level {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 1.4rem;
+      color: #571000;
+    }
+
+    .level-badge {
+      padding: 0.3rem 0.6rem;
+      border-radius: 5px;
+      font-weight: bold;
+      color: #571000;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container-principal" id="cardsContainer"></div>
+
+  <script>
+    async function loadPlayers() {
+      const res = await fetch(`data.json?t=${Date.now()}`); // evita cache
+      const allPlayers = await res.json();
+
+      const container = document.getElementById('cardsContainer');
+      container.innerHTML = '';
+
+      for (const player of allPlayers) {
+        const card = document.createElement('div');
+        card.classList.add('player-card');
+
+        card.addEventListener('click', () => {
+          window.location.href = `player.html?id=${player.ID}`;
+        });
+
+        card.innerHTML = `
+          <div style="display:flex; align-items:center; gap:1rem;">
+            <img class="player-pic" src="${player.Pic}" alt="${player.Nome}" />
+            <div class="player-info">
+              <div class="player-name">${player.Nome}</div>
+              <div class="player-money">Dinheiro: $${player.Dinheiro}</div>
+            </div>
+          </div>
+          <div class="player-level">
+            <div>Level</div>
+            <div class="level-badge">${player.Level}</div>
+          </div>
+        `;
+
+        container.appendChild(card);
+      }
+    }
+
+    loadPlayers(); // python3 -m http.server 8080
+  </script>
+</body>
+</html>
