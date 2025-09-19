@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Painel do Mestre</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(#05030e, #171433, #332d73, #6435a9);
+      color: #221122;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      width: 95%;
+      max-width: 1200px;
+      background: #ffd285;
+      border: 12px solid;
+      border-image: linear-gradient(
+        to right,
+        #411013, #5b1c0b, #823815, #933d00,
+        #a4510b, #803900, #ae4f00, #d26e10,
+        #da7b21, #d37c37, #762f03
+      ) 1;
+      border-radius: 15px;
+      padding: 1rem;
+      overflow-y: auto;
+      max-height: 90vh;
+    }
+
+    h2 {
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+      color: #571000;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 2rem;
+      background: #f5e6b3;
+    }
+
+    th, td {
+      border: 2px solid #aa6d2b;
+      padding: 8px 12px;
+      text-align: left;
+    }
+
+    th {
+      background: #c97d1e;
+      color: #fff;
+    }
+
+    tr:nth-child(even) {
+      background: #ffe5b8;
+    }
+
+    tr:hover {
+      background: #f4b75e;
+    }
+
+    /* Scrollbar igual ao player */
+    .container::-webkit-scrollbar {
+      width: 12px;
+    }
+
+    .container::-webkit-scrollbar-track {
+      background: #ffd285;
+      border-radius: 10px;
+    }
+
+    .container::-webkit-scrollbar-thumb {
+      background: linear-gradient(#c97d1e, #823815);
+      border-radius: 10px;
+      border: 2px solid #ffd285;
+    }
+
+    .container::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(#da7b21, #933d00);
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="tablesContainer">
+  </div>
+
+  <script>
+    async function loadAndRender() {
+      const container = document.getElementById("tablesContainer");
+
+      const files = [
+        { file: "monsters.json", title: "Monstros" },
+        { file: "weapons.json", title: "Armas" },
+        { file: "rings.json", title: "Anéis" },
+        { file: "shoes.json", title: "Botas" }
+      ];
+
+      for (const f of files) {
+        try {
+          const res = await fetch(f.file + "?t=" + Date.now());
+          const data = await res.json();
+
+          const keys = Object.keys(data[0]).filter(k => k !== "id" && k !== "icon" && k !== "Pic");
+
+          const h2 = document.createElement("h2");
+          h2.textContent = f.title;
+          container.appendChild(h2);
+
+          const table = document.createElement("table");
+          const thead = document.createElement("thead");
+          const trHead = document.createElement("tr");
+          keys.forEach(k => {
+            const th = document.createElement("th");
+            th.textContent = k;
+            trHead.appendChild(th);
+          });
+          thead.appendChild(trHead);
+          table.appendChild(thead);
+
+          const tbody = document.createElement("tbody");
+          data.forEach(obj => {
+            const tr = document.createElement("tr");
+            keys.forEach(k => {
+              const td = document.createElement("td");
+              td.textContent = obj[k];
+              tr.appendChild(td);
+            });
+            tbody.appendChild(tr);
+          });
+          table.appendChild(tbody);
+
+          container.appendChild(table);
+
+        } catch (err) {
+          console.error("Erro ao carregar", f.file, err);
+        }
+      }
+    }
+
+    loadAndRender();
+  </script>
+</body>
+</html>

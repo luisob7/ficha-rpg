@@ -1,9 +1,29 @@
 [
   {
-   "ID": 1,
-   "Nome": "Joãozinho",
-   "Dinheiro": 7777,
-   "Pic": "pics/example.png",
-   "Level": 12
+    "ID": 1,
+    "Nome": "Joãozinho",
+    "Idade": 7,
+    "Vida_max": 100,
+    "Vida": 100,
+    "Energia_max": 270,
+    "Energia": 270,
+    "Dinheiro": 7777,
+    "Pic": "pics/profile/example.png",
+    "Level": 12,
+    "Habilidades": {
+      "Cultivo": 5,
+      "Mineração": 2,
+      "Coleta": 1,
+      "Pesca": 4,
+      "Combate": 6
+    },
+    "Inventario": [
+      { "Item": "Abóbora", "Quantidade": 5 },
+      { "Item": "Enxada", "Quantidade": 1}
+    ],
+    "Arma": 6,
+    "Anel_1": 2,
+    "Anel_2": 3,
+    "Bota": 1
   }
 ]

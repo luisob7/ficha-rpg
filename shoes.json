@@ -1,0 +1,20 @@
+[
+  { "id": 1, "nome": "Tênis", "efeito": "Defesa +1", "icon": "pics/shoes/1.png" },
+  { "id": 2, "nome": "Botas de borracha", "efeito": "Imunidade +1", "icon": "pics/shoes/2.png" },
+  { "id": 3, "nome": "Botas de couro", "efeito": "Defesa +1 Imunidade +1", "icon": "pics/shoes/3.png" },
+  { "id": 4, "nome": "Botas de trabalho", "efeito": "Defesa +2", "icon": "pics/shoes/4.png" },
+  { "id": 5, "nome": "Botas de combate", "efeito": "Defesa +3", "icon": "pics/shoes/5.png" },
+  { "id": 6, "nome": "Botas de tundra", "efeito": "Defesa +2 Imunidade +1", "icon": "pics/shoes/6.png" },
+  { "id": 7, "nome": "Sapatos de Duende", "efeito": "Defesa +2 Imunidade +1", "icon": "pics/shoes/7.png" },
+  { "id": 8, "nome": "Botas térmicas", "efeito": "Defesa +1 Imunidade +2", "icon": "pics/shoes/8.png" },
+  { "id": 9, "nome": "Botas de vaqueiro", "efeito": "Defesa +2 Imunidade +2", "icon": "pics/shoes/9.png" },
+  { "id": 10, "nome": "Botas negras", "efeito": "Defesa +4 Imunidade +2", "icon": "pics/shoes/10.png" },
+  { "id": 11, "nome": "Botas de Salamandra", "efeito": "Defesa +3 Imunidade +3", "icon": "pics/shoes/11.png" },
+  { "id": 12, "nome": "Sapatos de Gênio", "efeito": "Defesa +1 Imunidade +6", "icon": "pics/shoes/12.png" },
+  { "id": 13, "nome": "Botas Mágicas da Emily", "efeito": "Defesa +4 Imunidade +4", "icon": "pics/shoes/13.png" },
+  { "id": 14, "nome": "Botas espaciais", "efeito": "Defesa +4 Imunidade +4", "icon": "pics/shoes/14.png" },
+  { "id": 15, "nome": "Sapatos de Cristal", "efeito": "Defesa +3 Imunidade +5", "icon": "pics/shoes/15.png" },
+  { "id": 16, "nome": "Sapatos de Palhaço de Brasa", "efeito": "Defesa +6 Imunidade +5", "icon": "pics/shoes/16.png" },
+  { "id": 17, "nome": "Botas de Sereia", "efeito": "Defesa +5 Imunidade +8", "icon": "pics/shoes/17.png" },
+  { "id": 18, "nome": "Botas de Escama de Dragão", "efeito": "Defesa +7", "icon": "pics/shoes/18.png" }
+]
