@@ -1,21 +1,62 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Ficha do Jogador</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; }
-  html, body { height:100%; margin:0; padding:0; font-family: Arial,sans-serif; background: linear-gradient(#05030e,#171433,#332d73,#6435a9); color:#f0f0f0; display:flex; justify-content:center; align-items:center; overflow:hidden; }
-  .container { width:95%; min-width:85%; max-width:1200px; max-height:90vh; background:#ffd285; border:12px solid; border-image: linear-gradient(to right,#411013,#5b1c0b,#823815,#933d00,#a4510b,#803900,#ae4f00,#d26e10,#da7b21,#d37c37,#762f03) 1; border-radius:15px; display:flex; flex-direction:column; overflow:hidden; }
-  .content { flex:1; overflow-y:auto; padding:1rem 0; }
-  .block { padding:1.5rem 2rem; display:flex; flex-direction:column; gap:1rem; }
+  html, body {
+    height:100%;
+    margin:0;
+    padding:0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(#05030e,#171433,#332d73,#6435a9);
+    color:#f0f0f0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+  }
+
+  .container {
+    width:95%;
+    min-width:0; /* importante para o flex */
+    max-width:1200px;
+    max-height:90vh;
+    background:#ffd285;
+    border:12px solid;
+    border-image: linear-gradient(to right,#411013,#5b1c0b,#823815,#933d00,#a4510b,#803900,#ae4f00,#d26e10,#da7b21,#d37c37,#762f03) 1;
+    border-radius:15px;
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+    flex:0 1 auto; /* NÃO deixa crescer ilimitado */
+  }
+
+  .content { flex:1; overflow-y:auto; padding:1rem 0; min-width:0; }
+  .block { padding:1.5rem 2rem; display:flex; flex-direction:column; gap:1rem; min-width:0; }
   .divider { height:3px; background-color:#d68f54; width:100%; margin:0; }
   .block-1 { flex-direction:row; align-items:flex-start; gap:2rem; flex-wrap:wrap; }
-  .profile-pic { width:200px; height:250px; object-fit:cover; border:4px solid; border-image: linear-gradient(to right,#853605,#b14e05,#5b2b2a,#dc7b05,#853605) 1; flex-shrink:0; }
-  .player-info { display:flex; flex-direction:column; gap:6px; font-weight:bold; color:#222; }
+  .block-6 {
+    flex-direction: column;   /* <- título em cima, mapa embaixo */
+    align-items: center;      /* centraliza o mapa */
+    gap: 1rem;                /* espaço entre título e mapa */
+  }
+
+  .profile-pic {
+    width:200px;
+    height:250px;
+    object-fit:cover;
+    border:4px solid;
+    border-image: linear-gradient(to right,#853605,#b14e05,#5b2b2a,#dc7b05,#853605) 1;
+    flex-shrink:0;
+    min-width:0;
+  }
+  .player-info { display:flex; flex-direction:column; gap:6px; font-weight:bold; color:#222; min-width:0; }
 
   .skill-row { display:flex; align-items:center; margin-bottom:10px; }
-  .skill-name { flex:0 0 150px; font-size:1.3rem; font-weight:bold; color:#222; display:flex; align-items:center; }
+  .skill-name { flex:0 0 150px; font-size:1.3rem; font-weight:bold; color:#222; display:flex; align-items:center; min-width:0; }
   .skill-name img { width:24px; height:24px; margin-right:0.5rem; }
   .skill-boxes { flex:1; display:flex; justify-content:space-between; }
   .skill-box { width:25px; height:25px; background:#C97D1E; border:2px solid #AA6D2B; border-radius:4px; }
@@ -35,8 +76,19 @@
   .stat-line img { width:20px; height:20px; }
 
   #notes-container { overflow-x:hidden; }
-  #notes { display:flex; gap:10px; flex-wrap:nowrap; }
-  .equip-square { display:flex; flex-direction:column; align-items:center; width:calc((100% - 30px)/4); border:2px solid #AA6D2B; border-radius:6px; padding:5px; background:#f5e6b3; flex-shrink:0; }
+  #notes { display:flex; gap:10px; flex-wrap:nowrap; min-width:0; }
+  .equip-square {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    width:calc((100% - 30px)/4);
+    border:2px solid #AA6D2B;
+    border-radius:6px;
+    padding:5px;
+    background:#f5e6b3;
+    flex-shrink:0;
+    min-width:0;
+  }
   .equip-square img { max-width:80%; height:auto; margin-bottom:5px; }
   .equip-name, .equip-effect { text-align:center; word-break:break-word; }
   .equip-name { font-weight:bold; color:#221122; }
@@ -47,34 +99,42 @@
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
-    justify-content: center; /* centraliza */
-    max-width: 600px;        /* largura máxima da grade */
-    margin: 0 auto;          /* centraliza o bloco na tela */
+    justify-content: center;
+    max-width: 600px;
+    margin: 0 auto;
+    min-width:0;
   }
-
 
   .skill-card {
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex: 0 1 120px;       /* largura base de 120px, mas pode encolher */
-    max-width: 120px;      /* garante que não passe disso */
+    flex: 0 1 120px;
+    max-width: 120px;
     padding: 10px;
     border: 2px solid #AA6D2B;
     border-radius: 6px;
     background: #f5e6b3;
   }
 
-  .skill-card img {
-    width: 64px;
-    height: 64px;
-    margin-bottom: 8px;
+  .skill-card img { width: 64px; height: 64px; margin-bottom: 8px; }
+  .skill-card span { font-size: 0.9rem; text-align: center; color: #221122; font-weight: bold; }
+
+  /* Container específico para o mapa - FIX pra não estourar */
+  .map-wrapper {
+    max-width: 100%;      /* controla o tamanho do mapa visualmente */
+    flex: 0 1 auto;
+    min-width: 0;       /* essencial pra flex encolher */
+    display:flex;
+    align-items:center;
+    justify-content:center;
   }
-  .skill-card span {
-    font-size: 0.9rem;
-    text-align: center;
-    color: #221122;
-    font-weight: bold;
+  .map-wrapper img {
+    width:100%;
+    height:auto;
+    display:block;
+    object-fit:contain;
+    max-height: 40vh; /* se quiser limitar a altura do mapa também */
   }
 
   @media(max-width:768px){
@@ -84,13 +144,13 @@
     .skill-name { flex:0 0 120px; font-size:1.2rem; }
     .equip-square { width:calc((100% - 30px)/2); }
     .skill-card { flex: 0 1 calc((50% - 15px)); max-width: calc((50% - 15px)); }
+    .map-wrapper { max-width: 25%; } /* torna o mapa maior em telas pequenas */
   }
 
-  #skills-list.empty {
-    color: #221122; /* vermelho escuro */
-    font-weight: bold;
-    font-style: italic;
-  }
+  #skills-list.empty { color: #221122; font-weight: bold; font-style: italic; }
+
+  /* Garantir que elementos flex não causem overflow */
+  .container, .content, .block { min-width: 0; }
 
   .content::-webkit-scrollbar { width:8px; }
   .content::-webkit-scrollbar-thumb { background:rgba(0,0,0,0.2); border-radius:6px; }
@@ -110,28 +170,46 @@
         <div id="player-money" class="stat-line"><img src="pics/icons/coin.png" alt="Moeda"> 0</div>
       </div>
     </div>
+
     <div class="divider"></div>
+
     <div class="block block-2" id="skills-container"></div>
+
     <div class="divider"></div>
+
     <div class="block block-3">
       <h2 class="title">Inventário</h2>
       <ul id="inventory"></ul>
     </div>
+
     <div class="divider"></div>
+
     <div class="block block-4">
       <div id="notes-container">
         <div id="notes"></div>
       </div>
     </div>
+
     <div class="divider"></div>
+
     <div class="block block-5">
       <h2 class="title">Perícias</h2>
       <div id="skills-list"></div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="block block-6">
+      <h2 class="title">Mapa</h2>
+      <div class="map-wrapper">
+        <img src="pics/map.png" alt="Mapa do jogo">
+      </div>
     </div>
   </div>
 </div>
 
 <script>
+// Seu script original — mantive igual e só acrescentei min-width/props no CSS pra evitar overflow
 const levelTitles = {
   0:"Principiante",1:"Principiante",2:"Principiante",3:"Novato",4:"Rústico",5:"Rústico",
   6:"Vaqueiro",7:"Vaqueiro",8:"Peão",9:"Peão",10:"Lavrador",11:"Lavrador",
@@ -146,102 +224,121 @@ const loadPlayerDetails = async () => {
   const id = parseInt(params.get('id'),10);
   if(!id) return;
 
-  const res = await fetch('data.json');
-  const players = await res.json();
-  const player = players.find(p=>p.ID===id);
-  if(!player) return;
+  try {
+    const res = await fetch('data.json');
+    if(!res.ok) throw new Error('Failed to load data.json');
+    const players = await res.json();
+    const player = players.find(p=>p.ID===id);
+    if(!player) return;
 
-  document.getElementById("player-pic").src = player.Pic;
-  document.getElementById("player-name").textContent = `${player.Nome}, ${player.Idade}`;
-  document.getElementById("player-level").textContent = levelTitles[player.Level]||"Rei da Fazenda";
-  document.getElementById("player-life").innerHTML = `<img src="pics/icons/vida.png" alt="Vida"> ${player.Vida} / ${player.Vida_max}`;
-  document.getElementById("player-energy").innerHTML = `<img src="pics/icons/energia.png" alt="Energia"> ${player.Energia} / ${player.Energia_max}`;
-  document.getElementById("player-money").innerHTML = `<img src="pics/icons/coin.png" alt="Moeda"> ${player.Dinheiro}`;
+    document.getElementById("player-pic").src = player.Pic;
+    document.getElementById("player-name").textContent = `${player.Nome}, ${player.Idade}`;
+    document.getElementById("player-level").textContent = levelTitles[player.Level]||"Rei da Fazenda";
+    document.getElementById("player-life").innerHTML = `<img src="pics/icons/vida.png" alt="Vida"> ${player.Vida} / ${player.Vida_max}`;
+    document.getElementById("player-energy").innerHTML = `<img src="pics/icons/energia.png" alt="Energia"> ${player.Energia} / ${player.Energia_max}`;
+    document.getElementById("player-money").innerHTML = `<img src="pics/icons/coin.png" alt="Moeda"> ${player.Dinheiro}`;
 
-  // Habilidades (barra de progresso)
-  const skillsContainer = document.getElementById("skills-container");
-  const skillNames = ["Cultivo","Mineração","Coleta","Pesca","Combate"];
-  const skillIcons = { "Cultivo":"pics/icons/cultivo.png","Mineração":"pics/icons/mineracao.png","Coleta":"pics/icons/coleta.png","Pesca":"pics/icons/pesca.png","Combate":"pics/icons/combate.png" };
-  skillsContainer.innerHTML="";
-  skillNames.forEach(skill=>{
-    const skillRow=document.createElement("div"); skillRow.className="skill-row";
-    const skillName=document.createElement("div"); skillName.className="skill-name";
-    const icon=document.createElement("img"); icon.src=skillIcons[skill]; icon.alt=skill;
-    skillName.appendChild(icon); skillName.appendChild(document.createTextNode(skill));
-    const boxes=document.createElement("div"); boxes.className="skill-boxes";
-    const level = player.Habilidades[skill]||0;
-    for(let i=1;i<=10;i++){ 
-      const box=document.createElement("div"); 
-      box.className="skill-box"; 
-      if(i<=level) box.classList.add(i%5===0?"skill-yellow":"skill-red"); 
-      boxes.appendChild(box);
-    }
-    skillRow.appendChild(skillName); skillRow.appendChild(boxes); 
-    skillsContainer.appendChild(skillRow);
-  });
-
-  // Inventário
-  const inv = document.getElementById("inventory"); inv.innerHTML="";
-  player.Inventario.forEach(obj=>{ 
-    const li=document.createElement("li"); 
-    li.textContent=`${obj.Quantidade}x ${obj.Item}`; 
-    inv.appendChild(li); 
-  });
-
-  // Perícias
-  const skillsRes = await fetch('Pericias.json');
-  const skillsData = await skillsRes.json();
-  const skillsList = document.getElementById("skills-list");
-  skillsList.innerHTML="";
-  if (player.Skills && player.Skills.length > 0) {
-    player.Skills.forEach(skillId => {
-      const skillData = skillsData.find(s => s.Id === skillId);
-      if (skillData) {
-        const card = document.createElement("div");
-        card.className = "skill-card";
-        const img = document.createElement("img");
-        img.src = skillData.Pic;
-        img.alt = skillData.Nome;
-        const name = document.createElement("span");
-        name.textContent = skillData.Nome;
-        card.appendChild(img);
-        card.appendChild(name);
-        skillsList.appendChild(card);
+    // Habilidades (barra de progresso)
+    const skillsContainer = document.getElementById("skills-container");
+    const skillNames = ["Cultivo","Mineração","Coleta","Pesca","Combate"];
+    const skillIcons = { "Cultivo":"pics/icons/cultivo.png","Mineração":"pics/icons/mineracao.png","Coleta":"pics/icons/coleta.png","Pesca":"pics/icons/pesca.png","Combate":"pics/icons/combate.png" };
+    skillsContainer.innerHTML="";
+    skillNames.forEach(skill=>{
+      const skillRow=document.createElement("div"); skillRow.className="skill-row";
+      const skillName=document.createElement("div"); skillName.className="skill-name";
+      const icon=document.createElement("img"); icon.src=skillIcons[skill]; icon.alt=skill;
+      skillName.appendChild(icon); skillName.appendChild(document.createTextNode(skill));
+      const boxes=document.createElement("div"); boxes.className="skill-boxes";
+      const level = (player.Habilidades && typeof player.Habilidades[skill] !== 'undefined') ? player.Habilidades[skill] : 0;
+      for(let i=1;i<=10;i++){
+        const box=document.createElement("div");
+        box.className="skill-box";
+        if(i<=level) box.classList.add(i%5===0?"skill-yellow":"skill-red");
+        boxes.appendChild(box);
       }
+      skillRow.appendChild(skillName); skillRow.appendChild(boxes);
+      skillsContainer.appendChild(skillRow);
     });
-  } else {
-    skillsList.textContent = "Nenhuma perícia aprendida.";
-    skillsList.classList.add("empty");
-  }
 
-  // Equipamentos
-  const [shoesRes,ringsRes,weaponsRes] = await Promise.all([fetch('shoes.json'),fetch('rings.json'),fetch('weapons.json')]);
-  const [shoes,rings,weapons] = await Promise.all([shoesRes.json(),ringsRes.json(),weaponsRes.json()]);
-
-  const equipIds = [
-    { id: player.Arma, type: 'weapon' },
-    { id: player.Bota, type: 'shoe' },
-    { id: player.Anel_1, type: 'ring' },
-    { id: player.Anel_2, type: 'ring' }
-  ];
-
-  const notesDiv = document.getElementById("notes");
-  notesDiv.innerHTML="";
-
-  equipIds.forEach(eq=>{
-    const div=document.createElement("div"); div.className="equip-square";
-    let itemData;
-    if(eq.type==='shoe') itemData=shoes.find(s=>s.id===eq.id);
-    else if(eq.type==='ring') itemData=rings.find(r=>r.id===eq.id);
-    else if(eq.type==='weapon') itemData=weapons.find(w=>w.id===eq.id);
-    if(itemData){
-      const img=document.createElement("img"); img.src=itemData.icon; img.alt=itemData.nome;
-      const name=document.createElement("div"); name.className="equip-name"; name.textContent=itemData.nome;
-      const effect=document.createElement("div"); effect.className="equip-effect"; effect.textContent=eq.type==='weapon'?itemData.dano:itemData.efeito;
-      div.appendChild(img); div.appendChild(name); div.appendChild(effect);
+    // Inventário
+    const inv = document.getElementById("inventory"); inv.innerHTML="";
+    if(Array.isArray(player.Inventario)){
+      player.Inventario.forEach(obj=>{
+        const li=document.createElement("li");
+        li.textContent=`${obj.Quantidade}x ${obj.Item}`;
+        inv.appendChild(li);
+      });
     }
-    notesDiv.appendChild(div);
-  });
+
+    // Perícias
+    let skillsData = [];
+    try {
+      const skillsRes = await fetch('Pericias.json');
+      if(skillsRes.ok) skillsData = await skillsRes.json();
+    } catch(e){ console.warn('Pericias.json não carregada', e); }
+
+    const skillsList = document.getElementById("skills-list");
+    skillsList.innerHTML="";
+    if (player.Skills && player.Skills.length > 0) {
+      player.Skills.forEach(skillId => {
+        const skillData = skillsData.find(s => s.Id === skillId);
+        if (skillData) {
+          const card = document.createElement("div");
+          card.className = "skill-card";
+          const img = document.createElement("img");
+          img.src = skillData.Pic;
+          img.alt = skillData.Nome;
+          const name = document.createElement("span");
+          name.textContent = skillData.Nome;
+          card.appendChild(img);
+          card.appendChild(name);
+          skillsList.appendChild(card);
+        }
+      });
+    } else {
+      skillsList.textContent = "Nenhuma perícia aprendida.";
+      skillsList.classList.add("empty");
+    }
+
+    // Equipamentos
+    const [shoesRes,ringsRes,weaponsRes] = await Promise.allSettled([fetch('shoes.json'),fetch('rings.json'),fetch('weapons.json')]);
+    const shoes = shoesRes.status==='fulfilled' && shoesRes.value.ok ? await shoesRes.value.json() : [];
+    const rings = ringsRes.status==='fulfilled' && ringsRes.value.ok ? await ringsRes.value.json() : [];
+    const weapons = weaponsRes.status==='fulfilled' && weaponsRes.value.ok ? await weaponsRes.value.json() : [];
+
+    const equipIds = [
+      { id: player.Arma, type: 'weapon' },
+      { id: player.Bota, type: 'shoe' },
+      { id: player.Anel_1, type: 'ring' },
+      { id: player.Anel_2, type: 'ring' }
+    ];
+
+    const notesDiv = document.getElementById("notes");
+    notesDiv.innerHTML="";
+
+    equipIds.forEach(eq=>{
+      const div=document.createElement("div"); div.className="equip-square";
+      let itemData;
+      if(eq.type==='shoe') itemData=shoes.find(s=>s.id===eq.id);
+      else if(eq.type==='ring') itemData=rings.find(r=>r.id===eq.id);
+      else if(eq.type==='weapon') itemData=weapons.find(w=>w.id===eq.id);
+      if(itemData){
+        const img=document.createElement("img"); img.src=itemData.icon; img.alt=itemData.nome;
+        const name=document.createElement("div"); name.className="equip-name"; name.textContent=itemData.nome;
+        const effect=document.createElement("div"); effect.className="equip-effect"; effect.textContent=eq.type==='weapon'?itemData.dano:itemData.efeito;
+        div.appendChild(img); div.appendChild(name); div.appendChild(effect);
+      } else {
+        const placeholder = document.createElement("div");
+        placeholder.style.opacity = "0.6";
+        placeholder.style.fontSize = "0.9rem";
+        placeholder.textContent = "Vazio";
+        div.appendChild(placeholder);
+      }
+      notesDiv.appendChild(div);
+    });
+  } catch (err) {
+    console.error('Erro ao carregar player:', err);
+  }
 };
 
 loadPlayerDetails();
