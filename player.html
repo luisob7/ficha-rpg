@@ -26,7 +26,7 @@
   #inventory { margin:0; padding-left:1rem; font-size:20px; }
   #inventory li { margin:2px 0; padding:0; color:#221122; }
 
-  .block-3, .block-4 { min-height:100px; }
+  .block-3, .block-4, .block-5 { min-height:100px; }
   #player-name { color:#221122; font-size:1.8rem; }
   #player-level { color:#221122; font-size:1.3rem; }
   #player-money img { vertical-align:text-bottom; width:20px; height:20px; }
@@ -42,12 +42,54 @@
   .equip-name { font-weight:bold; color:#221122; }
   .equip-effect { font-size:0.9rem; color:#333; }
 
+  /* --- Perícias --- */
+  #skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center; /* centraliza */
+    max-width: 600px;        /* largura máxima da grade */
+    margin: 0 auto;          /* centraliza o bloco na tela */
+  }
+
+
+  .skill-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 0 1 120px;       /* largura base de 120px, mas pode encolher */
+    max-width: 120px;      /* garante que não passe disso */
+    padding: 10px;
+    border: 2px solid #AA6D2B;
+    border-radius: 6px;
+    background: #f5e6b3;
+  }
+
+  .skill-card img {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 8px;
+  }
+  .skill-card span {
+    font-size: 0.9rem;
+    text-align: center;
+    color: #221122;
+    font-weight: bold;
+  }
+
   @media(max-width:768px){
     .block-1 { flex-direction:column; align-items:center; }
     .profile-pic { width:150px; height:200px; }
     .player-info { align-items:center; }
     .skill-name { flex:0 0 120px; font-size:1.2rem; }
     .equip-square { width:calc((100% - 30px)/2); }
+    .skill-card { flex: 0 1 calc((50% - 15px)); max-width: calc((50% - 15px)); }
+  }
+
+  #skills-list.empty {
+    color: #221122; /* vermelho escuro */
+    font-weight: bold;
+    font-style: italic;
   }
 
   .content::-webkit-scrollbar { width:8px; }
@@ -81,6 +123,11 @@
         <div id="notes"></div>
       </div>
     </div>
+    <div class="divider"></div>
+    <div class="block block-5">
+      <h2 class="title">Perícias</h2>
+      <div id="skills-list"></div>
+    </div>
   </div>
 </div>
 
@@ -111,7 +158,7 @@ const loadPlayerDetails = async () => {
   document.getElementById("player-energy").innerHTML = `<img src="pics/icons/energia.png" alt="Energia"> ${player.Energia} / ${player.Energia_max}`;
   document.getElementById("player-money").innerHTML = `<img src="pics/icons/coin.png" alt="Moeda"> ${player.Dinheiro}`;
 
-  // Habilidades
+  // Habilidades (barra de progresso)
   const skillsContainer = document.getElementById("skills-container");
   const skillNames = ["Cultivo","Mineração","Coleta","Pesca","Combate"];
   const skillIcons = { "Cultivo":"pics/icons/cultivo.png","Mineração":"pics/icons/mineracao.png","Coleta":"pics/icons/coleta.png","Pesca":"pics/icons/pesca.png","Combate":"pics/icons/combate.png" };
@@ -140,6 +187,32 @@ const loadPlayerDetails = async () => {
     li.textContent=`${obj.Quantidade}x ${obj.Item}`; 
     inv.appendChild(li); 
   });
+
+  // Perícias
+  const skillsRes = await fetch('Pericias.json');
+  const skillsData = await skillsRes.json();
+  const skillsList = document.getElementById("skills-list");
+  skillsList.innerHTML="";
+  if (player.Skills && player.Skills.length > 0) {
+    player.Skills.forEach(skillId => {
+      const skillData = skillsData.find(s => s.Id === skillId);
+      if (skillData) {
+        const card = document.createElement("div");
+        card.className = "skill-card";
+        const img = document.createElement("img");
+        img.src = skillData.Pic;
+        img.alt = skillData.Nome;
+        const name = document.createElement("span");
+        name.textContent = skillData.Nome;
+        card.appendChild(img);
+        card.appendChild(name);
+        skillsList.appendChild(card);
+      }
+    });
+  } else {
+    skillsList.textContent = "Nenhuma perícia aprendida.";
+    skillsList.classList.add("empty");
+  }
 
   // Equipamentos
   const [shoesRes,ringsRes,weaponsRes] = await Promise.all([fetch('shoes.json'),fetch('rings.json'),fetch('weapons.json')]);

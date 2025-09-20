@@ -1,0 +1,102 @@
+[
+  {
+    "Id": 1,
+    "Nome": "Magia da Floresta",
+    "Pic": "pics/skills/1.png"
+  },
+  {
+    "Id": 2,
+    "Nome": "Guia de Linguagem Anã",
+    "Pic": "pics/skills/2.png"
+  },
+  {
+    "Id": 3,
+    "Nome": "Conhecimento de Urso",
+    "Pic": "pics/skills/3.png"
+  },
+  {
+    "Id": 4,
+    "Nome": "Mapeamento de Cavernas",
+    "Pic": "pics/skills/4.png"
+  },
+  {
+    "Id": 5,
+    "Nome": "Caminho do Vento",
+    "Pic": "pics/skills/5.png"
+  },
+  {
+    "Id": 6,
+    "Nome": "Jack sega ágil, Jack seja parrudo",
+    "Pic": "pics/skills/6.png"
+  },
+  {
+    "Id": 7,
+    "Nome": "Manual de Segurança dos Anões",
+    "Pic": "pics/skills/7.png"
+  },
+  {
+    "Id": 8,
+    "Nome": "Cavalo",
+    "Pic": "pics/skills/8.png"
+  },
+  {
+    "Id": 9,
+    "Nome": "Mestre do Galinheiro",
+    "Pic": "pics/skills/9.png"
+  },
+  {
+    "Id": 10,
+    "Nome": "Pastor",
+    "Pic": "pics/skills/10.png"
+  },
+  {
+    "Id": 11,
+    "Nome": "Rastreador",
+    "Pic": "pics/skills/11.png"
+  },
+  {
+    "Id": 12,
+    "Nome": "Guerreiro",
+    "Pic": "pics/skills/12.png"
+  },
+  {
+    "Id": 13,
+    "Nome": "Bárbaro",
+    "Pic": "pics/skills/13.png"
+  },
+  {
+    "Id": 14,
+    "Nome": "Defensor",
+    "Pic": "pics/skills/14.png"
+  },
+  {
+    "Id": 15,
+    "Nome": "Acrobata",
+    "Pic": "pics/skills/15.png"
+  },
+  {
+    "Id": 16,
+    "Nome": "Biscoitos Dourados",
+    "Pic": "pics/skills/16.png"
+  },
+  {
+    "Id": 17,
+    "Nome": "Baús Dourados",
+    "Pic": "pics/skills/16.png"
+  },
+  {
+    "Id": 18,
+    "Nome": "Caixa Misteriosa Dourada",
+    "Pic": "pics/skills/16.png"
+  },
+  {
+    "Id": 19,
+    "Nome": "Fada da Cura",
+    "Pic": "pics/skills/16.png"
+  },
+  {
+    "Id": 20,
+    "Nome": "Sapo Faminto",
+    "Pic": "pics/skills/16.png"
+  }
+]
