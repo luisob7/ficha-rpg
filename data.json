@@ -1,30 +1,83 @@
 [
   {
     "ID": 1,
-    "Nome": "Joãozinho",
-    "Idade": 7,
+    "Nome": "Pablo Cavalcante",
+    "Idade": 22,
     "Vida_max": 100,
     "Vida": 100,
     "Energia_max": 270,
     "Energia": 270,
-    "Dinheiro": 7777,
-    "Pic": "pics/profile/example.png",
-    "Level": 12,
+    "Dinheiro": 6500,
+    "Pic": "pics/profile/1.png",
+    "Level": 0,
     "Habilidades": {
-      "Cultivo": 5,
-      "Mineração": 2,
-      "Coleta": 1,
-      "Pesca": 4,
-      "Combate": 6
+      "Cultivo": 0,
+      "Mineração": 0,
+      "Coleta": 0,
+      "Pesca": 0,
+      "Combate": 0
+    },
+    "Inventario": [],
+    "Arma": 0,
+    "Anel_1": 0,
+    "Anel_2": 0,
+    "Bota": 0,
+    "Skills": [0]
+  },
+  {
+    "ID": 2,
+    "Nome": "Vanessa Barletto",
+    "Idade": 19,
+    "Vida_max": 100,
+    "Vida": 100,
+    "Energia_max": 270,
+    "Energia": 270,
+    "Dinheiro": 0,
+    "Pic": "pics/profile/2.png",
+    "Level": 0,
+    "Habilidades": {
+      "Cultivo": 0,
+      "Mineração": 0,
+      "Coleta": 0,
+      "Pesca": 0,
+      "Combate": 0
     },
     "Inventario": [
-      { "Item": "Abóbora", "Quantidade": 5 },
-      { "Item": "Enxada", "Quantidade": 1}
+      { "Item": "Livro de Leitura", "Quantidade": 3 },
+      { "Item": "Vara de Pesca", "Quantidade": 1 }
     ],
-    "Arma": 6,
-    "Anel_1": 2,
-    "Anel_2": 3,
-    "Bota": 1,
-    "Skills": [1, 7, 8, 9, 11, 15, 16]
+    "Arma": 0,
+    "Anel_1": 0,
+    "Anel_2": 0,
+    "Bota": 0,
+    "Skills": [0]
+  },
+  {
+    "ID": 3,
+    "Nome": "Marlon Barletto",
+    "Idade": 22,
+    "Vida_max": 100,
+    "Vida": 100,
+    "Energia_max": 270,
+    "Energia": 270,
+    "Dinheiro": 0,
+    "Pic": "pics/profile/3.png",
+    "Level": 0,
+    "Habilidades": {
+      "Cultivo": 0,
+      "Mineração": 0,
+      "Coleta": 0,
+      "Pesca": 0,
+      "Combate": 0
+    },
+    "Inventario": [
+      { "Item": "Livro de Leitura", "Quantidade": 3 },
+      { "Item": "Vara de Pesca", "Quantidade": 1 }
+    ],
+    "Arma": 0,
+    "Anel_1": 0,
+    "Anel_2": 0,
+    "Bota": 0,
+    "Skills": [0]
   }
 ]
