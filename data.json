@@ -71,8 +71,9 @@
       "Combate": 0
     },
     "Inventario": [
-      { "Item": "Livro de Leitura", "Quantidade": 3 },
-      { "Item": "Vara de Pesca", "Quantidade": 1 }
+      { "Item": "Violão", "Quantidade": 1 },
+      { "Item": "Isqueiro", "Quantidade": 1 },
+      { "Item": "Caixa de Cigarro", "Quantidade": 1}
     ],
     "Arma": 0,
     "Anel_1": 0,
