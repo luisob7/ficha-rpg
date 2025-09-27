@@ -45,7 +45,9 @@
     "Inventario": [
       { "Item": "Livro de Leitura", "Quantidade": 3 },
       { "Item": "Vara de Pesca", "Quantidade": 1 },
-      { "Item": "Vara de Bambu", "Quantidade": 1 }
+      { "Item": "Vara de Bambu", "Quantidade": 1 },
+      { "Item": "Isca", "Quantidade": 9 },
+      { "Item": "Atum", "Quantidade": 1 }
     ],
     "Arma": 0,
     "Anel_1": 0,
@@ -74,8 +76,7 @@
     "Inventario": [
       { "Item": "Violão", "Quantidade": 1 },
       { "Item": "Isqueiro", "Quantidade": 1 },
-      { "Item": "Caixa de Cigarro", "Quantidade": 1},
-      { "Item": "Isca", "Quantidade": 10 }
+      { "Item": "Caixa de Cigarro", "Quantidade": 1}
     ],
     "Arma": 0,
     "Anel_1": 0,
