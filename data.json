@@ -7,7 +7,7 @@
     "Vida": 100,
     "Energia_max": 270,
     "Energia": 270,
-    "Dinheiro": 5935,
+    "Dinheiro": 5335,
     "Pic": "pics/profile/1.png",
     "Level": 0,
     "Habilidades": {
@@ -32,7 +32,7 @@
     "Vida": 100,
     "Energia_max": 270,
     "Energia": 270,
-    "Dinheiro": 0,
+    "Dinheiro": -220,
     "Pic": "pics/profile/2.png",
     "Level": 0,
     "Habilidades": {
@@ -61,7 +61,7 @@
     "Vida": 100,
     "Energia_max": 270,
     "Energia": 270,
-    "Dinheiro": 0,
+    "Dinheiro": -800,
     "Pic": "pics/profile/3.png",
     "Level": 0,
     "Habilidades": {
