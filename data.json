@@ -7,7 +7,7 @@
     "Vida": 100,
     "Energia_max": 270,
     "Energia": 270,
-    "Dinheiro": 6500,
+    "Dinheiro": 5985,
     "Pic": "pics/profile/1.png",
     "Level": 0,
     "Habilidades": {
@@ -44,7 +44,8 @@
     },
     "Inventario": [
       { "Item": "Livro de Leitura", "Quantidade": 3 },
-      { "Item": "Vara de Pesca", "Quantidade": 1 }
+      { "Item": "Vara de Pesca", "Quantidade": 1 },
+      { "Item": "Vara de Bambu", "Quantidade": 1 }
     ],
     "Arma": 0,
     "Anel_1": 0,
