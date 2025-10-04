@@ -7,9 +7,9 @@
     "Vida": 100,
     "Energia_max": 270,
     "Energia": 270,
-    "Dinheiro": 5440,
+    "Dinheiro": 6720,
     "Pic": "pics/profile/1.png",
-    "Level": 0,
+    "Level": 1,
     "Habilidades": {
       "Cultivo": 1,
       "Mineração": 0,
@@ -32,9 +32,9 @@
     "Vida": 99,
     "Energia_max": 270,
     "Energia": 270,
-    "Dinheiro": 0,
+    "Dinheiro": 65,
     "Pic": "pics/profile/2.png",
-    "Level": 1,
+    "Level": 2,
     "Habilidades": {
       "Cultivo": 1,
       "Mineração": 0,
@@ -46,7 +46,7 @@
       { "Item": "Livro de Leitura", "Quantidade": 3 },
       { "Item": "Vara de Pesca", "Quantidade": 1 },
       { "Item": "Vara de Bambu", "Quantidade": 1 },
-      { "Item": "Isca", "Quantidade": 6 }
+      { "Item": "Isca", "Quantidade": 3 }
     ],
     "Arma": 0,
     "Anel_1": 0,
@@ -64,7 +64,7 @@
     "Energia": 270,
     "Dinheiro": -1300,
     "Pic": "pics/profile/3.png",
-    "Level": 0,
+    "Level": 1,
     "Habilidades": {
       "Cultivo": 1,
       "Mineração": 0,
