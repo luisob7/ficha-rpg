@@ -7,7 +7,7 @@
     "Vida": 100,
     "Energia_max": 270,
     "Energia": 270,
-    "Dinheiro": 6720,
+    "Dinheiro": 6675,
     "Pic": "pics/profile/1.png",
     "Level": 1,
     "Habilidades": {
@@ -17,7 +17,9 @@
       "Pesca": 0,
       "Combate": 0
     },
-    "Inventario": [],
+    "Inventario": [
+      { "Item": "Isca", "Quantidade": 1}
+    ],
     "Arma": 0,
     "Anel_1": 0,
     "Anel_2": 0,
@@ -29,10 +31,10 @@
     "Nome": "Vanessa Barletto",
     "Idade": 19,
     "Vida_max": 100,
-    "Vida": 99,
+    "Vida": 100,
     "Energia_max": 270,
     "Energia": 270,
-    "Dinheiro": 65,
+    "Dinheiro": 265,
     "Pic": "pics/profile/2.png",
     "Level": 2,
     "Habilidades": {
@@ -44,9 +46,8 @@
     },
     "Inventario": [
       { "Item": "Livro de Leitura", "Quantidade": 3 },
-      { "Item": "Vara de Pesca", "Quantidade": 1 },
-      { "Item": "Vara de Bambu", "Quantidade": 1 },
-      { "Item": "Isca", "Quantidade": 3 }
+      { "Item": "Vara de Pesca Estragada", "Quantidade": 1 },
+      { "Item": "Vara de Bambu Estragada", "Quantidade": 1 }
     ],
     "Arma": 0,
     "Anel_1": 0,
@@ -58,11 +59,11 @@
     "ID": 3,
     "Nome": "Marlon Barletto",
     "Idade": 22,
-    "Vida_max": 100,
+    "Vida_max": 82,
     "Vida": 100,
     "Energia_max": 270,
     "Energia": 270,
-    "Dinheiro": -1300,
+    "Dinheiro": -1800,
     "Pic": "pics/profile/3.png",
     "Level": 1,
     "Habilidades": {
@@ -75,7 +76,8 @@
     "Inventario": [
       { "Item": "Violão", "Quantidade": 1 },
       { "Item": "Isqueiro", "Quantidade": 1 },
-      { "Item": "Caixa de Cigarro", "Quantidade": 1}
+      { "Item": "Caixa de Cigarro", "Quantidade": 1},
+      { "Item": "Isca", "Quantidade": 1}
     ],
     "Arma": 0,
     "Anel_1": 0,
