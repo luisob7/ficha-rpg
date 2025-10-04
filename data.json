@@ -46,10 +46,7 @@
       { "Item": "Livro de Leitura", "Quantidade": 3 },
       { "Item": "Vara de Pesca", "Quantidade": 1 },
       { "Item": "Vara de Bambu", "Quantidade": 1 },
-      { "Item": "Isca", "Quantidade": 6 },
-      { "Item": "Atum", "Quantidade": 1 },
-      { "Item": "Polvo", "Quantidade": 1 },
-      { "Item": "Salmonete", "Quantidade": 1}
+      { "Item": "Isca", "Quantidade": 6 }
     ],
     "Arma": 0,
     "Anel_1": 0,
