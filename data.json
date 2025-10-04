@@ -9,12 +9,12 @@
     "Energia": 270,
     "Dinheiro": 6675,
     "Pic": "pics/profile/1.png",
-    "Level": 1,
+    "Level": 4,
     "Habilidades": {
-      "Cultivo": 1,
+      "Cultivo": 2,
       "Mineração": 0,
       "Coleta": 0,
-      "Pesca": 0,
+      "Pesca": 2,
       "Combate": 0
     },
     "Inventario": [
@@ -36,18 +36,18 @@
     "Energia": 270,
     "Dinheiro": 265,
     "Pic": "pics/profile/2.png",
-    "Level": 2,
+    "Level": 5,
     "Habilidades": {
       "Cultivo": 1,
       "Mineração": 0,
-      "Coleta": 0,
-      "Pesca": 1,
+      "Coleta": 1,
+      "Pesca": 3,
       "Combate": 0
     },
     "Inventario": [
       { "Item": "Livro de Leitura", "Quantidade": 3 },
-      { "Item": "Vara de Pesca Estragada", "Quantidade": 1 },
-      { "Item": "Vara de Bambu Estragada", "Quantidade": 1 }
+      { "Item": "Vara de Pesca", "Quantidade": 1 },
+      { "Item": "Vara de Bambu", "Quantidade": 1 }
     ],
     "Arma": 0,
     "Anel_1": 0,
@@ -63,14 +63,14 @@
     "Vida": 100,
     "Energia_max": 270,
     "Energia": 270,
-    "Dinheiro": -1800,
+    "Dinheiro": -1300,
     "Pic": "pics/profile/3.png",
     "Level": 1,
     "Habilidades": {
       "Cultivo": 1,
       "Mineração": 0,
       "Coleta": 0,
-      "Pesca": 0,
+      "Pesca": 1,
       "Combate": 0
     },
     "Inventario": [
